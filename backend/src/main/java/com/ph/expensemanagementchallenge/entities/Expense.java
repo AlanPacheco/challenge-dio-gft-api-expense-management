@@ -33,7 +33,7 @@ public class Expense implements Serializable {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public Expense(){
+    public Expense() {
     }
 
     public Expense(Long id, Double amount, String description, Instant moment) {
@@ -73,6 +73,26 @@ public class Expense implements Serializable {
 
     public void setMoment(Instant moment) {
         this.moment = moment;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
     }
 
     @Override

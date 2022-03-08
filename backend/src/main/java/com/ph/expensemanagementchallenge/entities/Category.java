@@ -44,6 +44,10 @@ public class Category implements Serializable {
         this.name = name;
     }
 
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

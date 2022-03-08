@@ -55,6 +55,10 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
+    public List<Expense> getExpenses() {
+        return expenses;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -55,6 +55,14 @@ public class Payment implements Serializable {
         this.amount = amount;
     }
 
+    public Expense getExpense() {
+        return expense;
+    }
+
+    public void setExpense(Expense expense) {
+        this.expense = expense;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
