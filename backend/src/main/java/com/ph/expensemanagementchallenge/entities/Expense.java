@@ -17,6 +17,7 @@ public class Expense implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double amount;
+    private String description;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant moment;
@@ -35,10 +36,19 @@ public class Expense implements Serializable {
     public Expense(){
     }
 
-    public Expense(Long id, Double amount, Instant moment) {
+    public Expense(Long id, Double amount, String description, Instant moment) {
         this.id = id;
         this.amount = amount;
         this.moment = moment;
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Long getId() {
