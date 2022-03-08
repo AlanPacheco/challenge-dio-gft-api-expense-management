@@ -26,7 +26,7 @@ public class CategoryDTO  implements Serializable {
 
     public CategoryDTO(Category category){
         this(category.getId(), category.getName());
-        this.expensesDTO = category.getExpenses().stream().map(e -> new ExpenseDTO(e)).collect(Collectors.toList());
+       // this.expensesDTO = category.getExpenses().stream().map(e -> new ExpenseDTO(e)).collect(Collectors.toList());
     }
 
     public Long getId() {

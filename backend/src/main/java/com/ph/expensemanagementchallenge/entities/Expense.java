@@ -43,6 +43,15 @@ public class Expense implements Serializable {
         this.description = description;
     }
 
+    public Expense(Long id, Double amount, String description, Instant moment, Category category, List<Payment> payments) {
+        this.id = id;
+        this.amount = amount;
+        this.moment = moment;
+        this.description = description;
+        this.category = category;
+        this.payments = payments;
+    }
+
     public String getDescription() {
         return description;
     }

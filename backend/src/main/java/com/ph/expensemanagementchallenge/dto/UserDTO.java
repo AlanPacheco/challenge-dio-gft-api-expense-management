@@ -1,5 +1,6 @@
 package com.ph.expensemanagementchallenge.dto;
 
+import com.ph.expensemanagementchallenge.entities.Expense;
 import com.ph.expensemanagementchallenge.entities.User;
 
 import java.io.Serializable;
@@ -21,9 +22,12 @@ public class UserDTO implements Serializable {
         this.lastName = lastName;
     }
 
-    public UserDTO(User user){
+    public UserDTO(User user, List<Expense> expense){
         this(user.getId(), user.getFirstName(), user.getLastName());
-        this.expensesDTO = user.getExpenses().stream().map(e -> new ExpenseDTO(e)).collect(Collectors.toList());
+        expense.forEach(e -> {
+            expensesDTO.add(new ExpenseDTO(e));
+        });
+
     }
 
     public Long getId() {
@@ -48,5 +52,9 @@ public class UserDTO implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<ExpenseDTO> getExpensesDTO() {
+        return expensesDTO;
     }
 }

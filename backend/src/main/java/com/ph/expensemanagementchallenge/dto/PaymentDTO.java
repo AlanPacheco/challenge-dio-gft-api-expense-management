@@ -26,7 +26,7 @@ public class PaymentDTO implements Serializable {
 
     public PaymentDTO(Payment payment){
         this(payment.getId(), payment.getPaymentType(), payment.getAmount());
-        this.expenseDTO = new ExpenseDTO(payment.getExpense());
+        //this.expenseDTO = new ExpenseDTO(payment.getExpense());
     }
 
     public Long getId() {

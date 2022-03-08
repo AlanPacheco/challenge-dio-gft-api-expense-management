@@ -1,6 +1,8 @@
 package com.ph.expensemanagementchallenge.dto;
 
+import com.ph.expensemanagementchallenge.entities.Category;
 import com.ph.expensemanagementchallenge.entities.Expense;
+import com.ph.expensemanagementchallenge.entities.Payment;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -18,11 +20,11 @@ public class ExpenseDTO implements Serializable {
 
     private Instant moment;
 
-    private UserDTO userDTO;
-
-    private List<PaymentDTO> paymentsDTO = new ArrayList<>();
+    private Long userId;
 
     private CategoryDTO categoryDTO;
+
+    private List<PaymentDTO> paymentsDTO = new ArrayList<>();
 
     public ExpenseDTO(){
     }
@@ -36,9 +38,13 @@ public class ExpenseDTO implements Serializable {
 
     public ExpenseDTO(Expense expense){
         this(expense.getId(),expense.getAmount(), expense.getDescription(), expense.getMoment());
-        this.userDTO = new UserDTO(expense.getUser());
+
         this.categoryDTO = new CategoryDTO(expense.getCategory());
-        this.paymentsDTO = expense.getPayments().stream().map(e -> new PaymentDTO(e)).collect(Collectors.toList());
+        this.userId = expense.getUser().getId();
+
+        expense.getPayments().forEach(e->
+                paymentsDTO.add(new PaymentDTO(e)));
+
     }
 
     public Long getId() {
@@ -73,12 +79,12 @@ public class ExpenseDTO implements Serializable {
         this.moment = moment;
     }
 
-    public UserDTO getUserDTO() {
-        return userDTO;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUserDTO(UserDTO userDTO) {
-        this.userDTO = userDTO;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public CategoryDTO getCategoryDTO() {
@@ -87,5 +93,9 @@ public class ExpenseDTO implements Serializable {
 
     public void setCategoryDTO(CategoryDTO categoryDTO) {
         this.categoryDTO = categoryDTO;
+    }
+
+    public List<PaymentDTO> getPaymentsDTO() {
+        return paymentsDTO;
     }
 }
