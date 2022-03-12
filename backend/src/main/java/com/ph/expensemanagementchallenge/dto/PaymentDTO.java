@@ -13,7 +13,7 @@ public class PaymentDTO implements Serializable {
     private PaymentType paymentType;
     private Double amount;
 
-    private ExpenseDTO expenseDTO;
+    private Long expenseId;
 
     public PaymentDTO(){
     }
@@ -26,7 +26,7 @@ public class PaymentDTO implements Serializable {
 
     public PaymentDTO(Payment payment){
         this(payment.getId(), payment.getPaymentType(), payment.getAmount());
-        //this.expenseDTO = new ExpenseDTO(payment.getExpense());
+        this.expenseId = payment.getExpense().getId();
     }
 
     public Long getId() {
@@ -53,11 +53,11 @@ public class PaymentDTO implements Serializable {
         this.amount = amount;
     }
 
-    public ExpenseDTO getExpenseDTO() {
-        return expenseDTO;
+    public Long getExpenseId() {
+        return expenseId;
     }
 
-    public void setExpenseDTO(ExpenseDTO expenseDTO) {
-        this.expenseDTO = expenseDTO;
+    public void setExpenseId(Long expenseId) {
+        this.expenseId = expenseId;
     }
 }

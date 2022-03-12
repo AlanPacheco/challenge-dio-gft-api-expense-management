@@ -40,6 +40,7 @@ public class ExpenseDTO implements Serializable {
         this(expense.getId(),expense.getAmount(), expense.getDescription(), expense.getMoment());
 
         this.categoryDTO = new CategoryDTO(expense.getCategory());
+
         this.userId = expense.getUser().getId();
 
         expense.getPayments().forEach(e->
