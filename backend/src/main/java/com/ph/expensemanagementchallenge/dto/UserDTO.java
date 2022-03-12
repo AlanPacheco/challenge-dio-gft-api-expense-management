@@ -16,10 +16,18 @@ public class UserDTO implements Serializable {
     private String lastName;
     private List<ExpenseDTO> expensesDTO = new ArrayList<>();
 
+    public UserDTO(){
+    }
+
     public UserDTO(Long id, String firstName, String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public UserDTO(User user){
+        this(user.getId(), user.getFirstName(), user.getLastName());
+        user.getExpenses().forEach(expense -> expensesDTO.add(new ExpenseDTO(expense)));
     }
 
     public UserDTO(User user, List<Expense> expense){
