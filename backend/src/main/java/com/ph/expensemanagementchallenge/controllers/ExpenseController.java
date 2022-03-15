@@ -38,6 +38,12 @@ public class ExpenseController {
         return ResponseEntity.created(uri).body(expenseDTO);
     }
 
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ExpenseDTO> update(@PathVariable Long id, @RequestBody ExpenseDTO expenseDTO){
+        expenseDTO = expenseService.update(id, expenseDTO);
+        return ResponseEntity.ok().body(expenseDTO);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         expenseService.delete(id);
