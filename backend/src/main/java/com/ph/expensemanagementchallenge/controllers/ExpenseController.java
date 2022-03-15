@@ -38,4 +38,9 @@ public class ExpenseController {
         return ResponseEntity.created(uri).body(expenseDTO);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        expenseService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

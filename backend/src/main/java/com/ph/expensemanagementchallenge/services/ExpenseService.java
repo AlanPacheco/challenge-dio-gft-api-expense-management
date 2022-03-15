@@ -63,4 +63,12 @@ public class ExpenseService {
         return new ExpenseDTO(expense);
     }
 
+    public void delete(Long id){
+        List<Payment> payments = paymentRepository.findByExpense(new Expense(id,null,null, null));
+
+        payments.forEach(payment -> paymentRepository.delete(payment));
+
+        expenseRepository.deleteById(id);
+    }
+
 }
